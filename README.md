@@ -2,13 +2,13 @@
 Perpustakaan Computer Vision yang ringan untuk mengintegrasikan model pembelajaran mendalam dengan perangkat kamera.
 
 # DAFTAR ISI
-- [Pendahuluan] (#pendahuluan)
-- [Pemberitahuan] (#pemberitahuan)
-- [Persyaratan] (#persyaratan)
-- [Petunjuk] (#instruksi)
-- [Benchmarks] (#benchmarks)
-- [To-Dos] (#to-dos)
-- [Kutipan] (#kutipan)
+- [Pendahuluan](#pendahuluan)
+- [Pemberitahuan](#pemberitahuan)
+- [Persyaratan](#persyaratan)
+- [Petunjuk](#instruksi)
+- [Benchmarks](#benchmarks)
+- [To-Dos](#to-dos)
+- [Kutipan](#kutipan)
 
 # Pendahuluan
 Aplikasi yang menggunakan model pembelajaran mesin untuk tugas-tugas visi telah berkembang pesat dalam beberapa tahun terakhir, dan dengan demikian kebutuhan untuk alat-alat yang mengintegrasikan antara ilmu data dan pipa rekayasa. ForesAI bertujuan untuk menjembatani kesenjangan antara keduanya dengan menyediakan perpustakaan dengan API sederhana bagi Anda untuk menerapkan model pembelajaran mesin Anda yang dibangun di pustaka populer langsung ke perangkat kamera Anda di berbagai platform perangkat keras. Dengan penekanan khusus pada kasus penggunaan robotik, ForesAI bertujuan untuk meminimalkan penggunaan sumber daya sehingga Anda dapat menjalankan model Anda pada sebanyak mungkin konfigurasi perangkat keras yang berbeda dan memberi Anda alat untuk menyiarkan keluaran Anda ke seluruh sistem AI Anda.
