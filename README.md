@@ -1,38 +1,38 @@
-# ForesAI
-Lightweight Computer Vision library for integrating your deep learning models with camera devices to perform inference tasks.
+# DRAT COMPUTER VISION
+Perpustakaan Computer Vision yang ringan untuk mengintegrasikan model pembelajaran mendalam dengan perangkat kamera.
 
-# Table of Contents
-- [Introduction](#introduction)
-- [Notice](#notice)
-- [Requirements](#requirements)
-- [Instructions](#instructions)
-- [Benchmarks](#benchmarks)
-- [To-Dos](#to-dos)
-- [Citations](#citations)
+# DAFTAR ISI
+- [Pendahuluan] (# pendahuluan)
+- [Pemberitahuan] (# pemberitahuan)
+- [Persyaratan] (# persyaratan)
+- [Petunjuk] (# instruksi)
+- [Benchmarks] (# benchmarks)
+- [To-Dos] (# to-dos)
+- [Kutipan] (# kutipan)
 
-# Introduction
-Applications that utilizes machine learning models for vision tasks has been growing rapidly in recent years, and thus the need for tools that integrate between the data science and engineering pipelines. ForesAI aims to be the bridge the gap between the two by providing a library with simple APIs for you to apply your machine learning models built in popular libraries directly to your camera devices across different hardware platforms. With a particular emphasis on robotic use cases, ForesAI aims to minimize resource usage so that you can run your models on as many different hardware configurations as possible and provide you with the tools to broadcast your outputs to the rest of your AI system.
+# Pendahuluan
+Aplikasi yang menggunakan model pembelajaran mesin untuk tugas-tugas visi telah berkembang pesat dalam beberapa tahun terakhir, dan dengan demikian kebutuhan untuk alat-alat yang mengintegrasikan antara ilmu data dan pipa rekayasa. ForesAI bertujuan untuk menjembatani kesenjangan antara keduanya dengan menyediakan perpustakaan dengan API sederhana bagi Anda untuk menerapkan model pembelajaran mesin Anda yang dibangun di pustaka populer langsung ke perangkat kamera Anda di berbagai platform perangkat keras. Dengan penekanan khusus pada kasus penggunaan robotik, ForesAI bertujuan untuk meminimalkan penggunaan sumber daya sehingga Anda dapat menjalankan model Anda pada sebanyak mungkin konfigurasi perangkat keras yang berbeda dan memberi Anda alat untuk menyiarkan keluaran Anda ke seluruh sistem AI Anda.
 
-This is an early work in progress. The project stems out of my own research on efficient CNNs so I'm adding features/debugging as needed. Please check [To-Dos](#to-dos) for some upcoming tasks. However, I am looking for feedback as I want to library to support other use cases as well. Feel free to open an issue or make a pull request as you see fit--I am looking for additional contributors as I continue to build upon the library. 
+Ini adalah pekerjaan awal yang sedang berlangsung. Proyek ini berasal dari penelitian saya sendiri pada CNN yang efisien jadi saya menambahkan fitur / debugging sesuai kebutuhan. Silakan periksa [Untuk-Dos] (# to-dos) untuk beberapa tugas yang akan datang. Namun, saya mencari umpan balik karena saya ingin perpustakaan untuk mendukung kasus penggunaan lain juga. Jangan ragu untuk membuka masalah atau membuat permintaan tarik sesuai keinginan Anda - Saya mencari kontributor tambahan saat saya terus membangun di perpustakaan.
 
 # Notice
-ForesAI supports vision-related tasks such as object detection, sematic segmentation, and instance segmenatation based on the relevant models. These APIs assume you have prepared a pre-trained model. For my TensorFlow models, all training/evaluation is done via the [TensorFlow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection). I will provide the scripts I used for my own training under a different repo in the future, but YMMV as much of it depends on your own configurations.
+DratAI mendukung tugas-tugas terkait visi seperti deteksi objek, segmentasi sematik, dan segmentasi contoh berdasarkan model yang relevan. API ini mengasumsikan Anda telah menyiapkan model yang telah dilatih sebelumnya. Untuk model TensorFlow saya, semua pelatihan / evaluasi dilakukan melalui [TensorFlow Object Detection API] (https://github.com/tensorflow/models/tree/master/research/object_detection). Saya akan memberikan skrip yang saya gunakan untuk pelatihan saya sendiri di bawah repo yang berbeda di masa depan, tetapi YMMV sebanyak itu tergantung pada konfigurasi Anda sendiri.
 
-Orignally the library was meant to support TensorFlow only, but as you can see the scope has increased drastically as my own research demanded. I'm in the process of building a standard, library-agnostic inferface to make building new inference workflows much easier. As such, all the run_detection functions in the ops files will be depreciated in the future. Feel free to look at the **model_loader** module under **inference** to get a sense of how it is being done.
+Awalnya perpustakaan dimaksudkan untuk mendukung TensorFlow saja, tetapi karena Anda dapat melihat ruang lingkupnya telah meningkat secara drastis seperti yang dituntut oleh penelitian saya sendiri. Saya sedang dalam proses membangun standar, perpustakaan-agnostic inferface untuk membuat membangun alur kesimpulan baru jauh lebih mudah. Dengan demikian, semua fungsi run_detection dalam file ops akan terdepresiasi di masa depan. Jangan ragu untuk melihat modul **model_loader** di bawah **inference** untuk mengetahui bagaimana hal itu dilakukan.
 
-Currently, ForesAI supports the following tasks:
+Mendukung tugas-tugas berikut :
 
-## Object Detection / Instance Segmentation
-TensorFlow models that are trained using the [TensorFlow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection). Check out the [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) For the full list. Both SSD-Mobilenet and Mask-RCNN has been tested.
+## Deteksi Obyek / Segmentasi Instance
+Model TensorFlow yang dilatih menggunakan [TensorFlow Object Detection API] (https://github.com/tensorflow/models/tree/master/research/object_detection). Lihat [Kebun Binatang Model] (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) Untuk daftar lengkapnya. Baik SSD-Mobilenet dan Mask-RCNN telah diuji.
 
 
-## Object Detection
+## Deteksi Obyek
 [Movidius NCS](https://github.com/movidius/ncsdk/) compiled models for object detection. See the [NC App Zoo](https://github.com/movidius/ncappzoo) for details. The Caffe-compiled version of SSD-Mobilenet was tested.
 
 ## Semantic Segmentation
 All [PyTorch](http://pytorch.org/) models. Right now visualization only works for the cityscape dataset. I've included [ERFNet](https://github.com/Eromera/erfnet_pytorch), [Resnet18 8s](https://github.com/warmspringwinds/pytorch-segmentation-detection), and [Resnet34 8s](https://github.com/warmspringwinds/pytorch-segmentation-detection) for use.
 
-I would like to support additional libraries as well so let me know if you want to help in this endeaver!
+Saya ingin mendukung perpustakaan tambahan juga jadi beri tahu saya jika Anda ingin membantu di endeaver ini!
 
 # Requirements
 Must haves:
@@ -64,12 +64,12 @@ There are two main ways to access the module. If you want to run ForesAI as a st
 ```
 python main.py --config_path <CONFIG_PATH> 
 ```
-Where CONFIG_PATH is a json file with the configurations shown in demo_configs folder. If you want to test this out on your laptop **webcam_benchmark.json** would be a good first choice. Adding the "--benchmark" flag will show graphs measuring cpu/ram usage over time. One thing to notice is that the **device_path** in the config does not have to be an actual camera--a recorded video will work as well!
+Di mana CONFIG_PATH adalah file json dengan konfigurasi yang ditunjukkan dalam folder demo_configs. Jika Anda ingin menguji ini di laptop Anda ** webcam_benchmark.json ** akan menjadi pilihan pertama yang baik. Menambahkan tanda "--benchmark" akan menampilkan grafik yang mengukur penggunaan cpu / ram dari waktu ke waktu. Satu hal yang perlu diperhatikan adalah bahwa ** device_path ** dalam konfigurasi tidak harus menjadi kamera yang sebenarnya - rekaman video juga akan berfungsi!
 
-If you wish to use ForesAI as a package, you can start by running the webcam_benchmark_demo.py from your webcam to see how to use the camera detection API. You can also try the video_demo to have the object inference run on a video file of your choosing. For other configurations, please take a look at the *_demo.py scripts along with the respective JSON config files for how to use your own camera hardware. If using your own model, you will need to tweak the config json within the "demo_configs" folder.
+Jika Anda ingin menggunakan ForesAI sebagai paket, Anda dapat memulai dengan menjalankan webcam_benchmark_demo.py dari webcam Anda untuk melihat cara menggunakan API deteksi kamera. Anda juga dapat mencoba video_demo agar inferensi objek dijalankan pada file video pilihan Anda. Untuk konfigurasi lain, silakan lihat skrip * _demo.py bersama dengan file konfigurasi JSON masing-masing untuk cara menggunakan perangkat keras kamera Anda sendiri. Jika menggunakan model Anda sendiri, Anda harus mengubah konfigurasi json dalam folder "demo_configs".
 
 # Benchmarks
-These are the best benchmarks I got based on averages over a 1-minute stream. The precision benchmarks come from reports by their specific authors. It is **very** likely that all of these can be improved with specific model-based hacks. There's a lot of good work done with the SSD-Mobilenet [here](https://github.com/GustavZ/realtime_object_detection).
+Ini adalah tolok ukur terbaik yang saya dapatkan berdasarkan rata-rata di atas aliran 1 menit. Tolok ukur presisi berasal dari laporan oleh penulis khusus mereka. Ini sangat ** sangat mungkin bahwa semua ini dapat ditingkatkan dengan peretasan berbasis model tertentu. Ada banyak pekerjaan baik yang dilakukan dengan SSD-Mobilenet [di sini] (https://github.com/GustavZ/realtime_object_detection).
 
 **Jetson TX2; jetson_clocks enabled; Resolution 480x480**
 
@@ -118,19 +118,18 @@ These are the best benchmarks I got based on averages over a 1-minute stream. Th
 ***Third party implementation
 
 # To-Dos
-Right now I will only focus on features I need for my project in the immediate future, but I would love to hear from you about how to make this library useful in your own workflow!
+Saat ini saya hanya akan fokus pada fitur yang saya perlukan untuk proyek saya dalam waktu dekat, tetapi saya ingin mendengar dari Anda tentang bagaimana membuat perpustakaan ini berguna dalam alur kerja Anda sendiri!
 
-- Documentation
-- Make framework generalizable for custom models in Tensorflow and PyTorch (Model loaders)
-- Interface for sending detections (e.g. a Publisher independent of ROS)
-- Allow the user to implement manual, model-specific hacks 
-- Standardizing visualization for each task
-- multi-stick support for movidus
-- Add object tracker
-- ROS integration
-- Nvidia Tegra GPU usage monitoring (If on Jetson platform, you can just use tegrastats.sh)
-- Nvidia NVML GPU usage monitoring (can also just use nividia-smi)
-
+- Dokumentasi
+- Buat kerangka yang dapat digeneralisasikan untuk model khusus di Tensorflow dan PyTorch (Model loader)
+- Antarmuka untuk mengirim deteksi (misalnya Penerbit independen dari ROS)
+- Memungkinkan pengguna untuk mengimplementasikan peretasan manual, model-spesifik
+- Standarisasi visualisasi untuk setiap tugas
+- Dukungan multi-stick untuk movidus
+- Tambahkan pelacak objek
+- Integrasi ROS
+- Pemantauan penggunaan GPU Nvidia Tegra (Jika di platform Jetson, Anda cukup menggunakan tegrastats.sh)
+- Pemantauan penggunaan GPU Nvidia NVML (bisa juga menggunakan nividia-smi)
 
 
 # Citations
